@@ -3,8 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 
 class Test extends Component {
-	doIt(data) {
+	doIt(data, func) {
 		console.log(data);
+		func(data);
 		// this.props.filters[0].action('123');
 	}
 
@@ -17,7 +18,8 @@ class Test extends Component {
 				</header>
 				{this.props.filters.map(customFilter =>
 					customFilter.array.map(item => (
-						<button onClick={() => customFilter.action(item)}>
+						// <button onClick={() => customFilter.action(item)}>
+						<button onClick={() => this.doIt(item, customFilter.action)}>
 							{/* {console.log(item)} */}
 							{item.name}
 						</button>
